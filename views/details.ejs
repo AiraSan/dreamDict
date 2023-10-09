@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("./partials/head.ejs") %>
+<body class="w-full bg-white">
+    <div class="container md:w-[768px] mx-auto my-5">
+        <% for (let blog of blogs) { %>
+            <h1 class="my-4 leading-7 tracking-wide bg-slate-300 py-4 px-2"><%= blog.BlogContent %></h1>
+          <% } %>
+    </div>
+</body>
+</html>

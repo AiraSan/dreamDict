@@ -2,14 +2,16 @@
 <html lang="en">
     <%- include("./partials/head.ejs") %>
 <body class="w-full bg-slate-300">
-    <div class="container md:w-[768px] mx-auto grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 my-5">
-        <% blogHeader.forEach((blog, index) => { %>
-            <button class="card m-2 p-5" data-blogid="<%= index + 1 %>">
-                <p class="text-[30px] md:text-[40px] font-bold text-slate-400"><%= blog.BlogTitle.replace("[", "").replace("]", "").at(1) %></p>
-                <p class="text-[15px] md:text-[17px]"><%= blog.BlogTitle.slice(5) %></p>
-            </button>
-            
-        <% }) %>
+    <div class="container md:w-[768px] mx-auto my-5">
+        <div class="text-center text-gray-700 shadow-md rounded-md mx-4 py-4">
+            <h1 class="text-[40px] font-bold ">Dream Dictionary</h1>
+            <h2 class="text-[20px]">(အိပ်မက်အဘိဓာန်)</h2>
+        </div>
+        <div class="container md:w-[768px] my-5 mx-auto h-screen max-h-screen text-center text-gray-700 rounded-md p-4">
+            <p class="mx-auto text-[16px] sm:text-[20px] mb-4 text-gray-700 leading-9">မြင်မက်ခဲ့သောအိပ်မက်ထဲမှ အဓိကဇာတ်ကောင်များ (သို့) အရာဝတ္ထုများကို မြန်မာစာလုံးပေါင်းဖြင့် အောက်ပါအကွက်လေးထဲထည့်ပါ။</p>
+            <input type="text" id="input-value" placeholder="ကခ..." class="mb-7 p-3 rounded-xl text-[16px] outline-none w-full text-[#919191] bg-zinc-200">
+        <a href="/alphabet" class="p-5 bg-zinc-200 shadow-md rounded-lg hidden">အက္ခရာ အစဥ်လိုက်ဖြင့်ရှာရန် <span>&rarr;</span></a>
+        </div>
     </div>
     <script src="index.js"></script>
 </body>

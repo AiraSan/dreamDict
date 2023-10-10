@@ -1,5 +1,6 @@
 const express = require("express");
 const data = require("./Data")
+const myanmarNumbers = require("myanmar-numbers");
 const app = express();
 
 const port = 3000;
@@ -13,26 +14,16 @@ app.use(express.static('dist'));
 
 // routes
 app.get("/", (req, res) => {
-    res.render("index", {blogHeader: data.BlogHeader});
+    res.render("index", {blogDetail: data.BlogDetail})
 })
 
-app.get("/:id", (req, res) => {
+app.get("/alphabet", (req, res) => {
+    res.render("alphabet", {blogHeader: data.BlogHeader});
+})
+
+app.get("/alphabet/:id", (req, res) => {
     const id = req.params.id;
     const filteredBlogs = data.BlogDetail.filter(blog => blog.BlogId == id);
-    res.render("details", {blogs: filteredBlogs})
-    // if (filteredBlogs.length > 0) {
-    //     Display the filtered blog content
-    //     filteredBlogs.forEach(blog => {
-    //       res.render("details", {blog})
-    //     });
-    //   } else {
-    //     console.log("No blogs found for the given BlogId.");
-    //   }
-
-    // data.BlogDetail.forEach(blog => {
-    //     if(blog.BlogId == id) {
-    //         res.send(data.BlogDetail[id])
-    //     }
-    // })
-    // res.render("details", {blogHeader: data.BlogHeader, blogDetail: data.BlogDetail})
+    const numberArr = filteredBlogs.map((blog, index) => myanmarNumbers(index + 1, "my"));
+    res.render("details", {title: data.BlogHeader[id].BlogTitle,blogs: filteredBlogs, numberArr})
 })

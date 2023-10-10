@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
     <%- include("./partials/head.ejs") %>
-<body class="w-full bg-white">
-    <div class="container md:w-[768px] mx-auto my-5">
+<body class="w-full bg-slate-300">
+    <div class="container md:w-[768px] min-h-screen mx-auto bg-white rounded-lg">
+        <div class="text-center text-gray-500 shadow-md rounded-md mx-4 py-4">
+            <h1 class="text-[25px] sm:text-[30px] font-bold "><%= title.replace("[", "'").replace("]", "'") %></h1>
+        </div>
         <% for (let blog of blogs) { %>
-            <h1 class="my-4 leading-7 tracking-wide bg-slate-300 py-4 px-2"><%= blog.BlogContent %></h1>
+            <div class="flex items-center">
+                <p class="text-sm p-2"><%= numberArr[blogs.indexOf(blog)] %>။</p>
+                <p class="leading-7 tracking-wide py-4 px-1">
+                    <%= blog.BlogContent %>
+                </p>
+            </div>
           <% } %>
     </div>
 </body>
